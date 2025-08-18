@@ -2,6 +2,8 @@
 
 Welcome to the docWiki Documentation System!
 
+V2
+
 ## Introduction
 
 docWiki is a lightweight documentation system built on Docsify, supporting Markdown format and Mermaid diagram rendering.
