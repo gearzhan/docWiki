@@ -2,7 +2,7 @@
 
 Welcome to the docWiki Documentation System!
 
-V2
+V1.1
 
 ## Introduction
 
