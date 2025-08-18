@@ -1,11 +1,11 @@
 - Getting Started
-  - [Home](README.md)
-  - [User Guide](guide/README.md)
+  - [Home](/)
+  - [User Guide](/guide/README.md)
 
 - Documentation
-  - [Tutorials](tutorials/getting-started.md)
-  - [API Reference](api/README.md)
+  - [Tutorials](/tutorials/getting-started)
+  - [API Reference](/api/)
 
 - Resources
-  - [About Project](about/about.md)
-  - [FAQ](faq/README.md)
+  - [About Project](/about/about)
+  - [FAQ](/faq/)

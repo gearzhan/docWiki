@@ -12,8 +12,9 @@
     window.$docsify = {
       name: 'docWiki',
       repo: 'your-org/docwiki',
-      basePath: './docs/',
+      basePath: '/docs/',
       loadSidebar: true,
+      alias: { '/.*/_sidebar.md': '/_sidebar.md' },
       subMaxLevel: 2,
       auto2top: true,
       search: { 
