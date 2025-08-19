@@ -5,11 +5,10 @@ on:
     branches: [ main ]
     paths:
       - 'docs/**'           # 任何文档变化都触发
-    paths-ignore:
-      - 'docs/_sidebar.md'  # 避免 CI 自己的提交再次触发本工作流
 
 jobs:
   build:
+    if: ${{ !contains(github.event.head_commit.message, '[skip ci]') }}
     runs-on: ubuntu-latest
     permissions:
       contents: write       # 允许推回仓库
@@ -19,11 +18,11 @@ jobs:
           fetch-depth: 0
 
       # 选项 A：使用 CLI（简单）
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
+
       - run: npm i -D docsify-generate-sidebar
       - run: npx docsify-generate-sidebar docs docs/_sidebar.md --ignore "assets,images,static,node_modules" --no-empty
 
@@ -32,12 +31,12 @@ jobs:
 
       - name: Commit if changed
         run: |
-          if [[ -n "$(git status --porcelain)" ]]; then
-            git config user.name  "gear zhan"
-            git config user.email "g.zhanyu@gmail.com"
+          if [[ -n "$(git status --porcelain docs/_sidebar.md)" ]]; then
+            git config user.name  "gear-ci"
+            git config user.email "g.zhanyu@ugmail.com"
             git add docs/_sidebar.md
             git commit -m "chore(sidebar): auto-update [skip ci]"
             git push
           else
             echo "No sidebar changes."
-          fi
+          fis
