@@ -23,8 +23,8 @@ jobs:
           node-version: '20'
           cache: 'npm'
 
-      - run: npm i -D docsify-generate-sidebar
-      - run: npx docsify-generate-sidebar docs docs/_sidebar.md --ignore "assets,images,static,node_modules" --no-empty
+      - run: npm ci
+      - run: npx -y docsify-generate-sidebar@1.5.1 docs docs/_sidebar.md --ignore "assets,images,static,node_modules" --no-empty
 
       # 若采用自定义脚本，请改为：
       # - run: node scripts/build-sidebar.mjs
