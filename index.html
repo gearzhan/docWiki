@@ -66,16 +66,7 @@
         placeholder: 'search...' 
       },
       mermaidConfig: {
-        querySelector: ".mermaid",
-        theme: window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default',
-        themeVariables: {
-          primaryColor: window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? '#bb86fc' : '#0366d6',
-          primaryTextColor: window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? '#ffffff' : '#000000',
-          primaryBorderColor: window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? '#6200ea' : '#0366d6',
-          lineColor: window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? '#ffffff' : '#333333',
-          secondaryColor: window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? '#03dac6' : '#f6f8fa',
-          tertiaryColor: window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? '#121212' : '#ffffff'
-        }
+        querySelector: ".mermaid"
       }
     };
   </script>
@@ -88,8 +79,71 @@
 <!-- Mermaid support -->
   <script type="module">
     import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
-    mermaid.initialize({ startOnLoad: true });
+    
+    // 检测当前主题
+    const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    // 根据主题配置Mermaid
+    const mermaidConfig = {
+      startOnLoad: true,
+      theme: isDarkMode ? 'dark' : 'default',
+      themeVariables: isDarkMode ? {
+        primaryColor: '#bb86fc',
+        primaryTextColor: '#ffffff',
+        primaryBorderColor: '#ffffff',
+        lineColor: '#ffffff',
+        secondaryColor: '#03dac6',
+        tertiaryColor: '#121212',
+        background: '#1e1e1e',
+        mainBkg: '#2d2d2d',
+        secondBkg: '#3d3d3d',
+        tertiaryBkg: '#4d4d4d'
+      } : {
+        primaryColor: '#0366d6',
+        primaryTextColor: '#000000',
+        primaryBorderColor: '#0366d6',
+        lineColor: '#333333',
+        secondaryColor: '#f6f8fa',
+        tertiaryColor: '#ffffff'
+      }
+    };
+    
+    mermaid.initialize(mermaidConfig);
     window.mermaid = mermaid;
+    
+    // 监听主题变化并重新初始化
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+      const newConfig = {
+        startOnLoad: true,
+        theme: e.matches ? 'dark' : 'default',
+        themeVariables: e.matches ? {
+          primaryColor: '#bb86fc',
+          primaryTextColor: '#ffffff',
+          primaryBorderColor: '#ffffff',
+          lineColor: '#ffffff',
+          secondaryColor: '#03dac6',
+          tertiaryColor: '#121212',
+          background: '#1e1e1e',
+          mainBkg: '#2d2d2d',
+          secondBkg: '#3d3d3d',
+          tertiaryBkg: '#4d4d4d'
+        } : {
+          primaryColor: '#0366d6',
+          primaryTextColor: '#000000',
+          primaryBorderColor: '#0366d6',
+          lineColor: '#333333',
+          secondaryColor: '#f6f8fa',
+          tertiaryColor: '#ffffff'
+        }
+      };
+      
+      mermaid.initialize(newConfig);
+      // 重新渲染所有mermaid图表
+      document.querySelectorAll('.mermaid').forEach(element => {
+        element.removeAttribute('data-processed');
+      });
+      mermaid.init();
+    });
   </script>
   <script src="//unpkg.com/docsify-mermaid@2.0.1/dist/docsify-mermaid.js"></script>
 </body>
