@@ -10,6 +10,45 @@
   <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple-dark.css">
   <link rel="stylesheet" media="(prefers-color-scheme: light)" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css">
 
+  <style>
+    .sidebar {
+      color: var(--theme-color, #42b983);
+    }
+    
+    /* Mermaid 暗色主题优化 */
+    @media (prefers-color-scheme: dark) {
+      .mermaid {
+        background-color: transparent !important;
+      }
+      
+      .mermaid svg {
+        background-color: transparent !important;
+      }
+      
+      .mermaid .node rect,
+      .mermaid .node circle,
+      .mermaid .node ellipse,
+      .mermaid .node polygon {
+        stroke: #ffffff !important;
+        stroke-width: 2px !important;
+      }
+      
+      .mermaid .edgePath path {
+        stroke: #ffffff !important;
+        stroke-width: 2px !important;
+      }
+      
+      .mermaid .edgeLabel {
+        background-color: #1e1e1e !important;
+        color: #ffffff !important;
+      }
+      
+      .mermaid .cluster rect {
+        stroke: #bb86fc !important;
+        stroke-width: 2px !important;
+      }
+    }
+  </style>
 </head>
 <body>
   <div id="app">Loading...</div>
@@ -27,7 +66,16 @@
         placeholder: 'search...' 
       },
       mermaidConfig: {
-        querySelector: ".mermaid"
+        querySelector: ".mermaid",
+        theme: window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default',
+        themeVariables: {
+          primaryColor: window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? '#bb86fc' : '#0366d6',
+          primaryTextColor: window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? '#ffffff' : '#000000',
+          primaryBorderColor: window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? '#6200ea' : '#0366d6',
+          lineColor: window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? '#ffffff' : '#333333',
+          secondaryColor: window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? '#03dac6' : '#f6f8fa',
+          tertiaryColor: window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? '#121212' : '#ffffff'
+        }
       }
     };
   </script>
