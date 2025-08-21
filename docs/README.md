@@ -2,7 +2,7 @@
 
 Welcome to the docWiki Documentation System!
 
-V1.1.2 update auto sidebar TEST02
+V1.1.3 Remove update auto sidebar TEST02
 
 ## Introduction
 
