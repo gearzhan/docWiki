@@ -25,7 +25,6 @@ jobs:
 
       - run: npm ci
       - run: npx -y docsify-generate-sidebar@1.5.1 docs docs/_sidebar.md --ignore "assets,images,static,node_modules" --no-empty
-
       # 若采用自定义脚本，请改为：
       # - run: node scripts/build-sidebar.mjs
 
@@ -39,4 +38,4 @@ jobs:
             git push
           else
             echo "No sidebar changes."
-          fis
+          fi
