@@ -210,15 +210,13 @@ Deployment options:
 
 ```mermaid
 flowchart LR
-    A[docWiki Source] --> B[GitHub Pages]
-    A --> C[Netlify]
-    A --> D[Vercel]
-    A --> E[Custom Server]
+    A[docWiki Source] --> B[Netlify]
+    A --> C[Vercel]
+    A --> D[Custom Server]
     
-    B --> F[Free Hosting]
-    C --> F
-    D --> F
-    E --> G[Full Control]
+    B --> E[Free Hosting]
+    C --> E
+    D --> F[Full Control]
 ```
 
 ### Can I use docWiki for team documentation?
