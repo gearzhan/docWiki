@@ -1,3 +1,5 @@
+仅供测试使用，素材随机生成
+
 # API Reference
 
 This document provides comprehensive API reference for docWiki integration and customization.

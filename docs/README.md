@@ -1,8 +1,10 @@
+仅供测试使用，素材随机生成
+
 # docWiki
 
 Welcome to the docWiki Documentation System!
 
-V1.1.3 Remove update auto sidebar TEST02
+V1.2 improving UI
 
 ## Introduction
 
